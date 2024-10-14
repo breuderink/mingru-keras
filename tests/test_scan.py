@@ -5,12 +5,15 @@ def merge(prev, curr):
     H_prev, Z_prev = prev
     H_curr, Z_curr = curr
     H = H_prev + Z_curr * (H_curr - H_prev)
+
+    # FIXME: Is maximum the right we to combine the gates?
     Z = ops.maximum(Z_prev, Z_curr)
     # print(f"{H_prev=}\n{H_curr=}\n{Z_curr=}\n=>\n{H=}\n{Z=},\n")
     return H, Z
 
 
 def unroll(X, Z):
+    # TODO: make work on vectors.
     H, _ = ops.associative_scan(merge, (X, Z))
     return H
 
