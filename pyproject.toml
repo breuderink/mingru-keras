@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "mingru"
+version = "0.1.0"
+description = ""
+authors = ["Boris Reuderink <boris@cortext.nl>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+keras = "^3.6.0"
+ipykernel = "^6.29.5"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+ipython = "^8.28.0"
+plotly = "^5.24.1"
+jax = "^0.4.34"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
