@@ -4,6 +4,16 @@ import numpy as np
 import pytest
 
 
+def sequential_method(X, Z):
+    _, n, d = X.shape
+    H = np.zeros_like(X)
+    h = np.zeros(d, dtype=np.float32)
+    for i in range(n):
+        h = h + Z[:, i, :] * (X[:, i, :] - h)
+        H[:, i, :] = h
+    return H
+
+
 def Blelloch_operator(prev, curr):
     prev_keep, prev_hidden = prev
     curr_keep, curr_hidden = curr
@@ -31,20 +41,12 @@ def test_associativity():
     assert foldl == pytest.approx(foldr)
 
 
-@pytest.mark.parametrize("b", [1, 32])
-@pytest.mark.parametrize("n", [1, 10])
-@pytest.mark.parametrize("d", [1, 16])
-def test_unroll(b, n, d):
+@pytest.mark.parametrize("b,n,d", [(32, 10, 8), (1, 10000, 1)])
+def test_Blellochs_method(b, n, d):
     X = np.random.randn(b, n, d)
     Z = np.random.rand(b, n, d)
-
-    H_desired = np.zeros_like(X)
-    h = np.zeros(d, dtype=np.float32)
-    for i in range(n):
-        h = h + Z[:, i, :] * (X[:, i, :] - h)
-        H_desired[:, i, :] = h
-
-    H_actual = Blellochs_method(X, Z)
+    H_desired = sequential_method(X, Z)
+    H_actual = Blellochs_method(ops.convert_to_tensor(X), ops.convert_to_tensor(Z))
     np.testing.assert_allclose(
         H_actual.squeeze(), H_desired.squeeze(), rtol=1e-4, atol=1e-4
     )
