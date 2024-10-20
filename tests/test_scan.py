@@ -2,29 +2,7 @@
 from keras import ops
 import numpy as np
 import pytest
-
-
-def sequential_method(X, Z):
-    _, n, d = X.shape
-    H = np.zeros_like(X)
-    h = np.zeros(d, dtype=np.float32)
-    for i in range(n):
-        h = h + Z[:, i, :] * (X[:, i, :] - h)
-        H[:, i, :] = h
-    return H
-
-
-def Blelloch_operator(prev, curr):
-    prev_keep, prev_hidden = prev
-    curr_keep, curr_hidden = curr
-    keep = prev_keep * curr_keep
-    hidden = prev_hidden * curr_keep + curr_hidden
-    return keep, hidden
-
-
-def Blellochs_method(X, Z, axis=-2):
-    _, H = ops.associative_scan(Blelloch_operator, ((1 - Z), Z * X), axis=axis)
-    return H
+from mingru.mingru import sequential_method, Blelloch_operator, Blellochs_method
 
 
 def test_associativity():
