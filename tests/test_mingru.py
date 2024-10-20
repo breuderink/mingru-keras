@@ -1,8 +1,8 @@
 import keras
 from keras import ops
 import pytest
-from mingru import MinGRU
-from mingru.core import sequential_method, Blellochs_method
+from mingru_keras import MinGRU
+from mingru_keras.core import sequential_method, Blellochs_method
 
 
 @pytest.mark.parametrize("b,n,d", [(32, 10, 8), (1, 1000, 1)])
