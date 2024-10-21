@@ -32,6 +32,11 @@ class MinGRU(keras.Layer):
         self.gate = keras.layers.Dense(units, activation="sigmoid")
         self.candidate = keras.layers.Dense(units)
 
+    def build(self, input_shape):
+        super().build(input_shape)
+        self.gate.build(input_shape)
+        self.candidate.build(input_shape)
+
     def call(self, X, method="blellochs"):
         Z = self.gate(X)
         H_tilde = self.candidate(X)
