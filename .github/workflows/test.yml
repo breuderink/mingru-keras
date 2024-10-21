@@ -17,8 +17,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install poetry
+          pip install -qU poetry
+          poetry install
 
       - name: Run tests
         run: |
           KERAS_BACKEND=jax poetry run pytest
+
+      - name: Build package
+        run: |
+          poetry package
