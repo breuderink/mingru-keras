@@ -18,7 +18,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -qU poetry
-          poetry install --only test
+          poetry install --only main,test
 
       - name: Run tests
         run: |
