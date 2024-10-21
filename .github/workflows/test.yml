@@ -23,7 +23,3 @@ jobs:
       - name: Run tests
         run: |
           KERAS_BACKEND=jax poetry run pytest
-
-      - name: Build package
-        run: |
-          poetry build
