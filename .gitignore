@@ -2,3 +2,5 @@ __pycache__
 dist
 poetry.lock
 .vscode/settings.json
+.python-version
+uv.lock
