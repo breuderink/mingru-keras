@@ -17,9 +17,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -qU poetry
-          poetry install --only main,test
+          pip install -qU uv
+          uv sync --extra test
 
       - name: Run tests
         run: |
-          KERAS_BACKEND=jax poetry run pytest
+          KERAS_BACKEND=jax uv run pytest
