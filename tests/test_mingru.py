@@ -20,7 +20,6 @@ def test_Blellochs_method(b, n, d):
 
 @pytest.mark.parametrize("b,n,i,d", [(16, 10, 8, 16), (32, 100, 2, 64)])
 def test_MinGRU(b, n, i, d):
-
     layer = MinGRU(d)
     X = keras.random.normal((b, n, i))
     Y = layer(X)

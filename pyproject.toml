@@ -1,24 +1,25 @@
-[tool.poetry]
-name = "mingru-keras"
+[project]
+name = "mingru"
 version = "0.1.0"
-description = "A minimal Python package with a minGRU Keras layer."
 authors = ["Boris Reuderink <boris@cortext.nl>"]
+description = "A minimal Python package with a minGRU Keras layer."
 readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "keras>=3.6.0",
+]
 
-[tool.poetry.dependencies]
-python = "^3.10"
-keras = "^3.6.0"
+[project.optional-dependencies]
+test = [
+    "jax>=0.4.35",
+    "pytest>=8.3.3",
+]
 
-[tool.poetry.group.test.dependencies]
-jax = "^0.4.34"
-pytest = "^8.3.3"
-
-[tool.poetry.group.dev.dependencies]
-ipykernel = "^6.29.5"
-ipython = "^8.28.0"
-plotly = "^5.24.1"
-pandas = "^2.2.3"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.uv]
+dev-dependencies = [
+    "ipykernel>=6.29.5",
+    "ipython>=8.28.0",
+    "pandas>=2.2.3",
+    "plotly>=5.24.1",
+    "ruff>=0.7.0",
+]
