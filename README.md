@@ -12,13 +12,13 @@ neural networks and modifies them to be efficiently trained in parallel.
 * Fully parallelizable during training, achieving faster training times.
 * Compatible with Keras 3.
 
-## Dependencies
+## Installation
 
 This project uses uv to manage dependencies. To install the required
 dependencies, run:
 
 ```bash
-uv install
+pip install --upgrade mingru-keras
 ```
 
 ## Usage
