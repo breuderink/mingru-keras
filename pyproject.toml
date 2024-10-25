@@ -1,7 +1,9 @@
 [project]
 name = "mingru-keras"
 version = "0.1.0"
-description = "This package contains a Keras 3 implementation of the MinGRU layer, a minimal and parallelizable version of the gated recurrent unit (GRU)."
+description = """This package contains a Keras 3 implementation of the minGRU \
+    layer, a minimal and parallelizable version of the gated recurrent unit \
+    (GRU)."""
 readme = "README.md"
 authors = [
     { name = "Boris Reuderink", email = "boris@cortext.nl" }

@@ -29,15 +29,13 @@ and use it as you would any other Keras layer.
 ## Example
 
 ```python
-import keras
+>>> import keras
+>>> from mingru_keras import MinGRU
+>>> layer = MinGRU(units=64)
+>>> X = keras.random.normal((32, 1000, 8))
+>>> layer(X).shape
+(32, 1000, 64)
 
-from mingru_keras import MinGRU
-
-layer = MinGRU(units=64)
-
-b, t, d = 32, 1000, 8
-X = keras.random.normal((b, t, d))
-Y = layer(X)
 ```
 
 ## Contributing
