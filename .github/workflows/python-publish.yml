@@ -24,7 +24,9 @@ jobs:
           uv sync --extra test
 
       - name: Run tests
-        run: KERAS_BACKEND=jax uv run pytest
+        run: |
+          KERAS_BACKEND=jax uv run pytest
+          uv run python -m doctest README.md
 
       - name: Build
         run: uv build
