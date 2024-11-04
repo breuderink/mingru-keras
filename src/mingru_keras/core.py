@@ -37,6 +37,10 @@ class MinGRU(keras.Layer):
         self.gate.build(input_shape)
         self.candidate.build(input_shape)
 
+    def compute_output_shape(self, input_shape):
+        b, t, _ = input_shape
+        return b, t, self.units
+
     def call(self, X):
         Z = self.gate(X)
         H_tilde = self.candidate(X)
