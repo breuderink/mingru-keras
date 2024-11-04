@@ -1,6 +1,6 @@
 [project]
 name = "mingru-keras"
-version = "0.1.0"
+version = "0.1.1"
 description = """This package contains a Keras 3 implementation of the minGRU \
     layer, a minimal and parallelizable version of the gated recurrent unit \
     (GRU)."""
@@ -15,8 +15,14 @@ dependencies = [
 
 [project.optional-dependencies]
 test = [
-    "jax>=0.4.35",
     "pytest>=8.3.3",
+]
+metal = [
+    "tensorflow-macos>=2.16.2",
+    "tensorflow-metal>=1.1.0",
+]
+jax = [
+    "jax>=0.4.34",
 ]
 
 [build-system]
@@ -29,5 +35,4 @@ dev-dependencies = [
     "ipython>=8.28.0",
     "pandas>=2.2.3",
     "plotly>=5.24.1",
-    "ruff>=0.7.0",
 ]

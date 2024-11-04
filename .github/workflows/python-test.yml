@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -qU uv
-          uv sync --extra test
+          uv sync --extra test --extra jax
 
       - name: Run tests
         run: |

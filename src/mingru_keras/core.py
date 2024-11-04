@@ -37,15 +37,14 @@ class MinGRU(keras.Layer):
         self.gate.build(input_shape)
         self.candidate.build(input_shape)
 
-    def call(self, X, method="blellochs"):
+    def compute_output_shape(self, input_shape):
+        b, t, _ = input_shape
+        return b, t, self.units
+
+    def call(self, X):
         Z = self.gate(X)
         H_tilde = self.candidate(X)
-        if method == "blellochs":
-            H = Blellochs_method(H_tilde, Z)
-        elif method == "sequential":
-            H = sequential_method(H_tilde, Z)
-        else:
-            raise NotImplementedError(f"Method {method} is not implemented!")
+        H = Blellochs_method(H_tilde, Z)
 
         return H
 
