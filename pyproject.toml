@@ -1,6 +1,6 @@
 [project]
 name = "mingru-keras"
-version = "0.1.1"
+version = "0.1.2"
 description = """This package contains a Keras 3 implementation of the minGRU \
     layer, a minimal and parallelizable version of the gated recurrent unit \
     (GRU)."""
@@ -10,7 +10,7 @@ authors = [
 ]
 requires-python = ">=3.10"
 dependencies = [
-    "keras>=3.6.0",
+    "keras>=3.5.0",
 ]
 
 [project.optional-dependencies]
