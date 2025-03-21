@@ -25,6 +25,7 @@ def Blellochs_method(H_tilde, Z, axis=-2):
     return H
 
 
+@keras.saving.register_keras_serializable(package="mingru_keras")
 class MinGRU(keras.Layer):
     def __init__(self, units, **kwargs):
         super().__init__(**kwargs)

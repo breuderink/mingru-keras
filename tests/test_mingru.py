@@ -39,10 +39,16 @@ def test_saving(b, n, i, d):
     with NamedTemporaryFile("wb", suffix=".keras") as f:
         keras.saving.save_model(model, f.name)
         model2 = keras.saving.load_model(f.name)
-        pass
 
     X = keras.random.normal((b, n, i))
     Y1 = model(X)
     Y2 = model2(X)
 
     assert ops.max(ops.abs(Y1 - Y2)) < 1e-4
+
+
+def test_registration():
+    print(keras.saving.get_custom_objects())
+    assert keras.saving.get_custom_objects().get("mingru_keras>MinGRU") == MinGRU, (
+        "MinGRU not registered correctly"
+    )
