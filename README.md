@@ -14,11 +14,10 @@ neural networks and modifies them to be efficiently trained in parallel.
 
 ## Installation
 
-This project uses uv to manage dependencies. To install the required
-dependencies, run:
+This project uses uv to manage dependencies. To install:
 
 ```bash
-pip install --upgrade mingru-keras
+uv install --upgrade mingru-keras
 ```
 
 ## Usage
